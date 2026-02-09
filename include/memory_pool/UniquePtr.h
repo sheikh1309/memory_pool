@@ -42,6 +42,7 @@ public:
                 m_deleter(m_ptr);
             }
             m_ptr = other.m_ptr;
+            m_deleter = std::move(other.m_deleter);
             other.m_ptr = nullptr;
         }
         return *this;
@@ -89,8 +90,8 @@ public:
         m_ptr = other.m_ptr;
         other.m_ptr = temp;
 
-        Deleter temp_deleter = std::move(other.m_deleter);
-        m_deleter = std::move(temp_deleter);
+        Deleter temp_deleter = std::move(m_deleter);
+        m_deleter = std::move(other.m_deleter);
         other.m_deleter = std::move(temp_deleter);
     }
 

@@ -1,6 +1,8 @@
 #ifndef MEMORY_POOL_POOLALLOCATOR_H
 #define MEMORY_POOL_POOLALLOCATOR_H
 
+#include <cstddef>
+
 class PoolAllocator {
 public:
     PoolAllocator(size_t block_size, size_t block_count);
